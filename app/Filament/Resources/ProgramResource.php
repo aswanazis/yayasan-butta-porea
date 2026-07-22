@@ -58,6 +58,18 @@ class ProgramResource extends Resource
                 ->directory('programs')
                 ->columnSpanFull(),
 
+            
+                Forms\Components\Select::make('thumbnail_position')
+                    ->label('Posisi Gambar')
+                    ->helperText('Atur bagian gambar yang ditonjolkan saat ditampilkan di kartu.')
+                    ->options([
+                        'top' => 'Atas',
+                        'center' => 'Tengah',
+                        'bottom' => 'Bawah',
+                    ])
+                    ->default('center')
+                    ->native(false),
+
             Forms\Components\Toggle::make('is_active')
                 ->label('Aktif / Tampilkan di Website')
                 ->default(true),

@@ -21,7 +21,7 @@
                 <a href="{{ route('articles.show', $article) }}" class="group">
                     <div class="aspect-video bg-earth-200 rounded-xl overflow-hidden mb-4">
                         @if($article->thumbnail)
-                            <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}" class="w-full h-full object-cover {{ $article->thumbnailPositionClass() }} group-hover:scale-105 transition duration-300">
                         @endif
                     </div>
                     <span class="text-xs font-semibold text-brand-600 uppercase">{{ $article->category->name ?? '' }}</span>

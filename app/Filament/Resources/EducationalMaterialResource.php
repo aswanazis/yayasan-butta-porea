@@ -54,6 +54,18 @@ class EducationalMaterialResource extends Resource
                     ->directory('materials/covers')
                     ->columnSpanFull(),
 
+                
+                Forms\Components\Select::make('thumbnail_position')
+                    ->label('Posisi Gambar')
+                    ->helperText('Atur bagian gambar yang ditonjolkan saat ditampilkan di kartu.')
+                    ->options([
+                        'top' => 'Atas',
+                        'center' => 'Tengah',
+                        'bottom' => 'Bawah',
+                    ])
+                    ->default('center')
+                    ->native(false),
+
                 Forms\Components\FileUpload::make('file_path')
                     ->label('File PDF')
                     ->required()

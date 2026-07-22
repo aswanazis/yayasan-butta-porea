@@ -52,7 +52,7 @@
                 class="relative">
                 <div class="aspect-square bg-brand-200 rounded-3xl overflow-hidden shadow-2xl shadow-brand-900/10">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($programs->first()?->thumbnail): ?>
-                        <img src="<?php echo e(Storage::url($programs->first()->thumbnail)); ?>" alt="Urban Farming" class="w-full h-full object-cover">
+                        <img src="<?php echo e(Storage::url($programs->first()->thumbnail)); ?>" alt="Urban Farming" class="w-full h-full object-cover <?php echo e($programs->first()->thumbnailPositionClass()); ?>">
                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </div>
                 <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
@@ -121,7 +121,7 @@
                     <a href="<?php echo e(route('programs.show', $program)); ?>" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div class="aspect-video bg-brand-200 overflow-hidden">
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($program->thumbnail): ?>
-                                <img src="<?php echo e(Storage::url($program->thumbnail)); ?>" alt="<?php echo e($program->name); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                <img src="<?php echo e(Storage::url($program->thumbnail)); ?>" alt="<?php echo e($program->name); ?>" class="w-full h-full object-cover <?php echo e($program->thumbnailPositionClass()); ?> group-hover:scale-110 transition duration-500">
                             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                         </div>
                         <div class="p-6">
@@ -164,7 +164,7 @@
                 <a href="<?php echo e(route('articles.show', $article)); ?>" class="group">
                     <div class="aspect-video bg-earth-200 rounded-xl overflow-hidden mb-4 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
                         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($article->thumbnail): ?>
-                            <img src="<?php echo e(Storage::url($article->thumbnail)); ?>" alt="<?php echo e($article->title); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <img src="<?php echo e(Storage::url($article->thumbnail)); ?>" alt="<?php echo e($article->title); ?>" class="w-full h-full object-cover <?php echo e($article->thumbnailPositionClass()); ?> group-hover:scale-110 transition duration-500">
                         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     </div>
                     <span class="text-xs font-semibold text-brand-600 uppercase"><?php echo e($article->category->name ?? ''); ?></span>

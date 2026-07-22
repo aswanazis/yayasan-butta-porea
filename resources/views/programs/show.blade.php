@@ -24,7 +24,7 @@
     @if($program->thumbnail)
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
             <div class="aspect-video rounded-2xl overflow-hidden shadow-lg">
-                <img src="{{ Storage::url($program->thumbnail) }}" alt="{{ $program->name }}" class="w-full h-full object-cover">
+                <img src="{{ Storage::url($program->thumbnail) }}" alt="{{ $program->name }}" class="w-full h-full object-cover {{ $program->thumbnailPositionClass() }}">
             </div>
         </div>
     @endif

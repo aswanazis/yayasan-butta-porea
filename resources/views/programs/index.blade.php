@@ -24,7 +24,7 @@
                 <a href="{{ route('programs.show', $program) }}" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-brand-100">
                     <div class="aspect-video bg-brand-200 overflow-hidden">
                         @if($program->thumbnail)
-                            <img src="{{ Storage::url($program->thumbnail) }}" alt="{{ $program->name }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <img src="{{ Storage::url($program->thumbnail) }}" alt="{{ $program->name }}" class="w-full h-full object-cover {{ $program->thumbnailPositionClass() }} group-hover:scale-105 transition duration-300">
                         @endif
                     </div>
                     <div class="p-6">

@@ -16,7 +16,7 @@
         <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-100">
             <div class="aspect-video bg-earth-200 flex items-center justify-center">
                 @if($material->thumbnail)
-                    <img src="{{ Storage::url($material->thumbnail) }}" alt="{{ $material->title }}" class="w-full h-full object-cover">
+                    <img src="{{ Storage::url($material->thumbnail) }}" alt="{{ $material->title }}" class="w-full h-full object-cover {{ $material->thumbnailPositionClass() }}">
                 @else
                     <span class="text-7xl">📄</span>
                 @endif

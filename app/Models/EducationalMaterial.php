@@ -18,6 +18,7 @@ class EducationalMaterial extends Model
         'slug',
         'description',
         'thumbnail',
+        'thumbnail_position',
         'file_path',
         'is_active',
     ];
@@ -33,5 +34,14 @@ class EducationalMaterial extends Model
                 $material->slug = Str::slug($material->getTranslation('title', 'id'));
             }
         });
+    }
+
+    public function thumbnailPositionClass(): string
+    {
+        return match ($this->thumbnail_position) {
+            'top' => 'object-top',
+            'bottom' => 'object-bottom',
+            default => 'object-center',
+        };
     }
 }

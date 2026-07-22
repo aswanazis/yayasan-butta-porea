@@ -20,6 +20,7 @@ class Program extends Model
         'excerpt',
         'description',
         'thumbnail',
+        'thumbnail_position',
         'is_active',
     ];
 
@@ -34,6 +35,15 @@ class Program extends Model
                $program->slug = Str::slug($program->getTranslation('name', 'id'));
             }
         });
+    }
+
+    public function thumbnailPositionClass(): string
+    {
+        return match ($this->thumbnail_position) {
+            'top' => 'object-top',
+            'bottom' => 'object-bottom',
+            default => 'object-center',
+        };
     }
 
     public function galleries(): HasMany

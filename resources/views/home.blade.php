@@ -48,7 +48,7 @@
                 class="relative">
                 <div class="aspect-square bg-brand-200 rounded-3xl overflow-hidden shadow-2xl shadow-brand-900/10">
                     @if($programs->first()?->thumbnail)
-                        <img src="{{ Storage::url($programs->first()->thumbnail) }}" alt="Urban Farming" class="w-full h-full object-cover">
+                        <img src="{{ Storage::url($programs->first()->thumbnail) }}" alt="Urban Farming" class="w-full h-full object-cover {{ $programs->first()->thumbnailPositionClass() }}">
                     @endif
                 </div>
                 <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
@@ -114,7 +114,7 @@
                     <a href="{{ route('programs.show', $program) }}" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         <div class="aspect-video bg-brand-200 overflow-hidden">
                             @if($program->thumbnail)
-                                <img src="{{ Storage::url($program->thumbnail) }}" alt="{{ $program->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                <img src="{{ Storage::url($program->thumbnail) }}" alt="{{ $program->name }}" class="w-full h-full object-cover {{ $program->thumbnailPositionClass() }} group-hover:scale-110 transition duration-500">
                             @endif
                         </div>
                         <div class="p-6">
@@ -156,7 +156,7 @@
                 <a href="{{ route('articles.show', $article) }}" class="group">
                     <div class="aspect-video bg-earth-200 rounded-xl overflow-hidden mb-4 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
                         @if($article->thumbnail)
-                            <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}" class="w-full h-full object-cover {{ $article->thumbnailPositionClass() }} group-hover:scale-110 transition duration-500">
                         @endif
                     </div>
                     <span class="text-xs font-semibold text-brand-600 uppercase">{{ $article->category->name ?? '' }}</span>

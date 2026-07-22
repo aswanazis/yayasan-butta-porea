@@ -24,7 +24,7 @@
                 <a href="{{ route('materials.show', $material) }}" class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-brand-100">
                     <div class="aspect-video bg-earth-200 overflow-hidden flex items-center justify-center">
                         @if($material->thumbnail)
-                            <img src="{{ Storage::url($material->thumbnail) }}" alt="{{ $material->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <img src="{{ Storage::url($material->thumbnail) }}" alt="{{ $material->title }}" class="w-full h-full object-cover {{ $material->thumbnailPositionClass() }} group-hover:scale-105 transition duration-300">
                         @else
                             <span class="text-5xl">📄</span>
                         @endif

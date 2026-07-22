@@ -22,6 +22,7 @@ class Article extends Model
         'excerpt',
         'content',
         'thumbnail',
+        'thumbnail_position',
         'is_published',
         'published_at',
     ];
@@ -38,6 +39,15 @@ class Article extends Model
                 $article->slug = Str::slug($article->getTranslation('title', 'id'));
             }
         });
+    }
+
+    public function thumbnailPositionClass(): string
+    {
+        return match ($this->thumbnail_position) {
+            'top' => 'object-top',
+            'bottom' => 'object-bottom',
+            default => 'object-center',
+        };
     }
 
     public function category(): BelongsTo

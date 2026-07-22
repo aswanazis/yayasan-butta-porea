@@ -6,23 +6,33 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::table('content_tables', function (Blueprint $table) {
-            //
+        Schema::table('programs', function (Blueprint $table) {
+            $table->string('thumbnail_position')->default('center')->after('thumbnail');
+        });
+
+        Schema::table('articles', function (Blueprint $table) {
+            $table->string('thumbnail_position')->default('center')->after('thumbnail');
+        });
+
+        Schema::table('educational_materials', function (Blueprint $table) {
+            $table->string('thumbnail_position')->default('center')->after('thumbnail');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::table('content_tables', function (Blueprint $table) {
-            //
+        Schema::table('programs', function (Blueprint $table) {
+            $table->dropColumn('thumbnail_position');
+        });
+
+        Schema::table('articles', function (Blueprint $table) {
+            $table->dropColumn('thumbnail_position');
+        });
+
+        Schema::table('educational_materials', function (Blueprint $table) {
+            $table->dropColumn('thumbnail_position');
         });
     }
 };
