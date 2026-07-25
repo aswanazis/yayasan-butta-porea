@@ -138,4 +138,16 @@ return [
 
     'section2_news_title' => 'Berita & Cerita Dampak',
     'section2_news_desc' => 'Ikuti perjalanan kami menebar manfaat di berbagai pelosok.',
+
+    // Halaman Detail Program (desain baru)
+    'prog_breadcrumb_program' => 'Program Kami',
+    'prog_process_title' => 'Proses Kerja Kami',
+    'prog_process_desc' => 'Pendekatan sistematis dari awal hingga menghasilkan dampak nyata.',
+    'prog_impact_title' => 'Dampak & Manfaat',
+    'prog_documentation_title' => 'Dokumentasi Kegiatan',
+    'prog_cta_title' => 'Tertarik Mendukung Program Ini?',
+    'prog_cta_desc' => 'Hubungi kami untuk berkolaborasi, menjadi mitra, atau mendukung program ini lebih jauh.',
+    'prog_cta_primary' => 'Hubungi Kami',
+    'prog_cta_secondary' => 'Lihat Program Lain',
+    'back_to_programs' => 'Kembali ke Program',
 ];

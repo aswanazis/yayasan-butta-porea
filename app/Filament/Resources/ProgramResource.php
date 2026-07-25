@@ -24,8 +24,27 @@ class ProgramResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+   public static function form(Form $form): Form
 {
+    $iconOptions = [
+        'recycling' => 'Daur Ulang',
+        'eco' => 'Ramah Lingkungan',
+        'compost' => 'Kompos',
+        'bug_report' => 'Hama/Serangga',
+        'spa' => 'Tanaman/Pupuk',
+        'delete_sweep' => 'Pengelolaan Sampah',
+        'savings' => 'Efisiensi/Hemat',
+        'agriculture' => 'Pertanian',
+        'water_drop' => 'Air/Irigasi',
+        'local_florist' => 'Tanaman/Bunga',
+        'diversity_3' => 'Komunitas',
+        'volunteer_activism' => 'Kemitraan/Donasi',
+        'groups' => 'Kelompok',
+        'park' => 'Lingkungan Hijau',
+        'school' => 'Edukasi',
+        'handshake' => 'Kerjasama',
+    ];
+
     return $form
         ->schema([
             Forms\Components\TextInput::make('name')
@@ -53,26 +72,117 @@ class ProgramResource extends Resource
                 ->columnSpanFull(),
 
             Forms\Components\FileUpload::make('thumbnail')
-                ->label('Gambar Cover')
-                ->image()
-                ->directory('programs')
-                ->columnSpanFull(),
-
-            
-                Forms\Components\Select::make('thumbnail_position')
-                    ->label('Posisi Gambar')
-                    ->helperText('Atur bagian gambar yang ditonjolkan saat ditampilkan di kartu.')
-                    ->options([
-                        'top' => 'Atas',
-                        'center' => 'Tengah',
-                        'bottom' => 'Bawah',
+                    ->label('Gambar Cover')
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
                     ])
-                    ->default('center')
-                    ->native(false),
+                    ->imageEditorMode(2)
+                    ->directory('programs')
+                    ->columnSpanFull()
+                    ->helperText('Klik ikon pensil di pojok gambar setelah upload untuk crop/geser posisi sebelum disimpan.'),
+
+            Forms\Components\Select::make('thumbnail_position')
+                ->label('Posisi Gambar')
+                ->helperText('Atur bagian gambar yang ditonjolkan saat ditampilkan di kartu.')
+                ->options([
+                    'top' => 'Atas',
+                    'center' => 'Tengah',
+                    'bottom' => 'Bawah',
+                ])
+                ->default('center')
+                ->native(false),
 
             Forms\Components\Toggle::make('is_active')
                 ->label('Aktif / Tampilkan di Website')
                 ->default(true),
+
+            Forms\Components\Section::make('Halaman Detail (Opsional)')
+                ->description('Kosongkan semua bagian ini kalau halaman detail program cukup tampilkan deskripsi biasa.')
+                ->collapsible()
+                ->collapsed()
+                ->schema([
+
+                    Forms\Components\Repeater::make('process_steps')
+                        ->label('Proses Kerja (langkah-langkah)')
+                        ->schema([
+                            Forms\Components\Select::make('icon')
+                                ->label('Ikon')
+                                ->options($iconOptions)
+                                ->searchable()
+                                ->required(),
+                            Forms\Components\TextInput::make('title')
+                                ->label('Judul Langkah')
+                                ->required(),
+                            Forms\Components\Textarea::make('description')
+                                ->label('Deskripsi')
+                                ->rows(2)
+                                ->required(),
+                        ])
+                        ->columns(1)
+                        ->collapsible()
+                        ->itemLabel(fn (array $state): ?string => $state['title'] ?? null)
+                        ->defaultItems(0)
+                        ->addActionLabel('+ Tambah Langkah')
+                        ->columnSpanFull(),
+
+                    Forms\Components\Repeater::make('impact_items')
+                        ->label('Poin Dampak & Manfaat')
+                        ->schema([
+                            Forms\Components\Select::make('icon')
+                                ->label('Ikon')
+                                ->options($iconOptions)
+                                ->searchable()
+                                ->required(),
+                            Forms\Components\TextInput::make('title')
+                                ->label('Judul')
+                                ->required(),
+                            Forms\Components\Textarea::make('description')
+                                ->label('Deskripsi')
+                                ->rows(2)
+                                ->required(),
+                        ])
+                        ->columns(1)
+                        ->collapsible()
+                        ->itemLabel(fn (array $state): ?string => $state['title'] ?? null)
+                        ->defaultItems(0)
+                        ->addActionLabel('+ Tambah Poin Dampak')
+                        ->columnSpanFull(),
+
+                    Forms\Components\Repeater::make('impact_stats')
+                        ->label('Statistik Dampak (contoh: "2T" / "Limbah Terolah per Bulan")')
+                        ->schema([
+                            Forms\Components\TextInput::make('value')
+                                ->label('Angka/Nilai')
+                                ->required()
+                                ->placeholder('mis. 50+, 2T, 30%'),
+                            Forms\Components\TextInput::make('label')
+                                ->label('Keterangan')
+                                ->required()
+                                ->placeholder('mis. Peternak Mitra'),
+                        ])
+                        ->columns(2)
+                        ->collapsible()
+                        ->itemLabel(fn (array $state): ?string => $state['label'] ?? null)
+                        ->defaultItems(0)
+                        ->maxItems(2)
+                        ->addActionLabel('+ Tambah Statistik')
+                        ->columnSpanFull(),
+
+                    Forms\Components\FileUpload::make('impact_image_1')
+                        ->label('Foto Dampak 1')
+                        ->image()
+                        ->directory('programs/impact'),
+
+                    Forms\Components\FileUpload::make('impact_image_2')
+                        ->label('Foto Dampak 2')
+                        ->image()
+                        ->directory('programs/impact'),
+
+                ]),
         ]);
 }
 

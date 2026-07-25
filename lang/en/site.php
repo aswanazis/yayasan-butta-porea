@@ -138,4 +138,16 @@ return [
 
     'section2_news_title' => 'News & Impact Stories',
     'section2_news_desc' => 'Follow our journey spreading benefits across the region.',
+
+    // Program detail page (new design)
+    'prog_breadcrumb_program' => 'Our Programs',
+    'prog_process_title' => 'Our Process',
+    'prog_process_desc' => 'A systematic approach from start to real impact.',
+    'prog_impact_title' => 'Impact & Benefits',
+    'prog_documentation_title' => 'Activity Documentation',
+    'prog_cta_title' => 'Interested in Supporting This Program?',
+    'prog_cta_desc' => 'Contact us to collaborate, become a partner, or further support this program.',
+    'prog_cta_primary' => 'Contact Us',
+    'prog_cta_secondary' => 'View Other Programs',
+    'back_to_programs' => 'Back to Programs',
 ];

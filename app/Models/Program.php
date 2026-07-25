@@ -12,13 +12,18 @@ class Program extends Model
 {
     use HasFactory, HasTranslations;
 
-    public $translatable = ['name', 'excerpt', 'description'];
+    public $translatable = ['name', 'excerpt', 'description', 'process_steps', 'impact_items', 'impact_stats'];
 
     protected $fillable = [
         'name',
         'slug',
         'excerpt',
         'description',
+        'process_steps',
+        'impact_items',
+        'impact_stats',
+        'impact_image_1',
+        'impact_image_2',
         'thumbnail',
         'thumbnail_position',
         'is_active',
