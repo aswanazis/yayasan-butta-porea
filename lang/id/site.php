@@ -117,4 +117,25 @@ return [
     'footer_address' => 'Jl. Letjen Hertasning Blok E7/9, Tidung, Rappocini,Kota Makassar, Sulawesi Selatan, 90222',
     'footer_social_title' => 'Ikuti Kami',
     'footer_copyright' => 'Seluruh hak cipta dilindungi.',
+
+    // Beranda (desain baru)
+    'hero2_badge' => 'Yayasan Butta Porea Indonesia',
+    'hero2_title_1' => 'Bersama Membangun',
+    'hero2_title_italic' => 'Tanah yang Subur',
+    'hero2_title_2' => 'dan Makmur',
+    'hero2_desc' => 'Menjembatani kearifan agrikultur tradisional dengan inovasi pembangunan berkelanjutan. Kami hadir untuk memberdayakan komunitas lokal melalui pengelolaan lingkungan yang terintegrasi.',
+    'btn_partnership' => 'Gabung Kemitraan',
+    'btn_learn_programs' => 'Pelajari Program',
+    'hero2_impact_label' => 'Dampak Nyata',
+    'hero2_impact_text' => 'Memberdayakan Warga Binaan Menuju Kemandirian',
+
+    'stat2_divisions' => 'Divisi Program',
+    'stat2_programs' => 'Program Aktif',
+    'stat2_founded' => 'Tahun Berdiri',
+
+    'section2_programs_title' => 'Inisiatif Utama Kami',
+    'section2_programs_desc' => 'Fokus pada solusi terintegrasi yang memberdayakan masyarakat sekaligus menjaga kelestarian lingkungan.',
+
+    'section2_news_title' => 'Berita & Cerita Dampak',
+    'section2_news_desc' => 'Ikuti perjalanan kami menebar manfaat di berbagai pelosok.',
 ];

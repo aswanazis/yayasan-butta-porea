@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+     <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 <body class="bg-earth-50 text-brand-900 antialiased">
 

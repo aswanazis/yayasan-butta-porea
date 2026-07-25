@@ -117,4 +117,25 @@ return [
     'footer_address' => 'Jl. Letjen Hertasning Blok E7/9, Tidung, Rappocini, Makassar City, South Sulawesi, 90222',
     'footer_social_title' => 'Follow Us',
     'footer_copyright' => 'All rights reserved.',
+
+    // Homepage (new design)
+    'hero2_badge' => 'Yayasan Butta Porea Indonesia',
+    'hero2_title_1' => 'Together Building',
+    'hero2_title_italic' => 'Fertile Land',
+    'hero2_title_2' => 'and Prosperity',
+    'hero2_desc' => 'Bridging traditional agricultural wisdom with sustainable development innovation. We empower local communities through integrated land management.',
+    'btn_partnership' => 'Join Partnership',
+    'btn_learn_programs' => 'Explore Programs',
+    'hero2_impact_label' => 'Real Impact',
+    'hero2_impact_text' => 'Empowering Assisted Residents Toward Independence',
+
+    'stat2_divisions' => 'Program Divisions',
+    'stat2_programs' => 'Active Programs',
+    'stat2_founded' => 'Founded',
+
+    'section2_programs_title' => 'Our Key Initiatives',
+    'section2_programs_desc' => 'Focused on integrated solutions that empower communities while preserving environmental sustainability.',
+
+    'section2_news_title' => 'News & Impact Stories',
+    'section2_news_desc' => 'Follow our journey spreading benefits across the region.',
 ];

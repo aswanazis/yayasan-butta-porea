@@ -16,6 +16,9 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
+        $totalPrograms = Program::where('is_active', true)->count();
+
+
         $articles = Article::where('is_published', true)
             ->latest('published_at')
             ->take(3)
@@ -26,7 +29,7 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
-        return view('home', compact('programs', 'articles', 'galleries'));
+        return view('home', compact('programs', 'totalPrograms', 'articles', 'galleries'));
     }
 
     public function about(): View
