@@ -26,6 +26,7 @@ class Program extends Model
         'impact_image_2',
         'thumbnail',
         'thumbnail_position',
+        'hero_image',
         'is_active',
     ];
 

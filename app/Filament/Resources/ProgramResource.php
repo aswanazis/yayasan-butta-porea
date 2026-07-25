@@ -96,6 +96,19 @@ class ProgramResource extends Resource
                 ->default('center')
                 ->native(false),
 
+                 Forms\Components\FileUpload::make('hero_image')
+                    ->label('Gambar Hero / Banner Halaman Detail')
+                    ->helperText('Foto khusus buat banner besar di halaman detail. Kosongkan kalau mau pakai Gambar Cover yang sama.')
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '21:9',
+                        '16:9',
+                    ])
+                    ->imageEditorMode(2)
+                    ->directory('programs/hero')
+                    ->columnSpanFull(),
+
             Forms\Components\Toggle::make('is_active')
                 ->label('Aktif / Tampilkan di Website')
                 ->default(true),

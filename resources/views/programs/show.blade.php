@@ -33,7 +33,9 @@
 
         <div class="relative rounded-2xl overflow-hidden min-h-[300px] flex items-end p-margin-mobile md:p-margin-desktop">
             <div class="absolute inset-0 z-0 bg-primary-container">
-                @if($program->thumbnail)
+                @if($program->hero_image)
+                    <img src="{{ Storage::url($program->hero_image) }}" alt="{{ $program->name }}" class="w-full h-full object-cover">
+                @elseif($program->thumbnail)
                     <img src="{{ Storage::url($program->thumbnail) }}" alt="{{ $program->name }}" class="w-full h-full object-cover {{ $program->thumbnailPositionClass() }}">
                 @endif
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
