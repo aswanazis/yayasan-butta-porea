@@ -150,4 +150,11 @@ return [
     'prog_cta_primary' => 'Contact Us',
     'prog_cta_secondary' => 'View Other Programs',
     'back_to_programs' => 'Back to Programs',
+
+    // News page (new design)
+    'page_articles_hero_desc' => 'Sharing stories of impact, collaboration, and real steps we take with the community toward a better future.',
+    'search_articles_placeholder' => 'Search news...',
+    'filter_all' => 'All',
+    'articles_no_results' => 'No news matches your search/filter.',
+    'read_more_full' => 'Read More',
 ];

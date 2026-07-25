@@ -150,4 +150,11 @@ return [
     'prog_cta_primary' => 'Hubungi Kami',
     'prog_cta_secondary' => 'Lihat Program Lain',
     'back_to_programs' => 'Kembali ke Program',
+
+    // Halaman Berita (desain baru)
+    'page_articles_hero_desc' => 'Menyajikan cerita tentang dampak, kolaborasi, dan langkah nyata kami bersama komunitas menuju masa depan yang lebih baik.',
+    'search_articles_placeholder' => 'Cari berita...',
+    'filter_all' => 'Semua',
+    'articles_no_results' => 'Tidak ada berita yang cocok dengan pencarian/filter kamu.',
+    'read_more_full' => 'Baca Selengkapnya',
 ];

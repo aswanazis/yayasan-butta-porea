@@ -3,24 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $articles = Article::where('is_published', true)
-            ->with('category')
-            ->latest('published_at')
-            ->paginate(9);
+        $locale = app()->getLocale();
 
-        return view('articles.index', compact('articles'));
+        $query = Article::where('is_published', true)
+            ->with('category')
+            ->latest('published_at');
+
+        if ($request->filled('search')) {
+            $query->where('title->' . $locale, 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('category')) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('slug', $request->category);
+            });
+        }
+
+        $articles = $query->paginate(9)->appends($request->query());
+
+        $categories = Category::orderBy('name')->get();
+
+        return view('articles.index', compact('articles', 'categories'));
     }
 
     public function show(Article $article): View
     {
-        $article->load('category', 'author');
-
         return view('articles.show', compact('article'));
     }
 }
