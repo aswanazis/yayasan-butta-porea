@@ -157,4 +157,11 @@ return [
     'filter_all' => 'All',
     'articles_no_results' => 'No news matches your search/filter.',
     'read_more_full' => 'Read More',
+
+    // Article detail page (new design)
+    'article_written_by' => 'Content Writer',
+    'article_default_author' => 'Editorial Team',
+    'article_share' => 'Share this article:',
+    'related_articles_title' => 'Related News',
+    'link_copied' => 'Link copied!',
 ];

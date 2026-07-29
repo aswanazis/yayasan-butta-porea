@@ -36,6 +36,25 @@ class ArticleController extends Controller
 
     public function show(Article $article): View
     {
-        return view('articles.show', compact('article'));
+        $relatedArticles = Article::where('is_published', true)
+            ->where('id', '!=', $article->id)
+            ->when($article->category_id, function ($q) use ($article) {
+                $q->where('category_id', $article->category_id);
+            })
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+
+        if ($relatedArticles->count() < 3) {
+            $more = Article::where('is_published', true)
+                ->where('id', '!=', $article->id)
+                ->whereNotIn('id', $relatedArticles->pluck('id'))
+                ->latest('published_at')
+                ->take(3 - $relatedArticles->count())
+                ->get();
+            $relatedArticles = $relatedArticles->concat($more);
+        }
+
+        return view('articles.show', compact('article', 'relatedArticles'));
     }
 }

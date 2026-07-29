@@ -157,4 +157,11 @@ return [
     'filter_all' => 'Semua',
     'articles_no_results' => 'Tidak ada berita yang cocok dengan pencarian/filter kamu.',
     'read_more_full' => 'Baca Selengkapnya',
+
+    // Halaman Detail Berita (desain baru)
+    'article_written_by' => 'Penulis Konten',
+    'article_default_author' => 'Tim Redaksi',
+    'article_share' => 'Bagikan artikel ini:',
+    'related_articles_title' => 'Berita Terkait',
+    'link_copied' => 'Tautan disalin!',
 ];
