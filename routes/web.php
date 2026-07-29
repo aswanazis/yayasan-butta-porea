@@ -23,6 +23,8 @@ Route::get('/galeri/{gallery}', [GalleryController::class, 'show'])->name('galle
 Route::get('/materi', [EducationalMaterialController::class, 'index'])->name('materials.index');
 Route::get('/materi/{material:slug}', [EducationalMaterialController::class, 'show'])->name('materials.show');
 
+Route::get('/materi/{material:slug}/download', [EducationalMaterialController::class, 'download'])->name('materials.download');
+
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/kontak', [ContactController::class, 'store'])->name('contact.store');
 

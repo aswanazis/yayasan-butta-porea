@@ -6,23 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('educational_materials', function (Blueprint $table) {
-            //
+            $table->unsignedInteger('downloads_count')->default(0)->after('file_path');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('educational_materials', function (Blueprint $table) {
-            //
+            $table->dropColumn('downloads_count');
         });
     }
 };

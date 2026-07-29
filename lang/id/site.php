@@ -164,4 +164,9 @@ return [
     'article_share' => 'Bagikan artikel ini:',
     'related_articles_title' => 'Berita Terkait',
     'link_copied' => 'Tautan disalin!',
+
+    // Halaman Materi Edukasi (desain baru)
+    'search_materials_placeholder' => 'Cari dokumen atau modul...',
+    'btn_read' => 'Baca',
+    'material_downloads' => ':count Unduhan',
 ];

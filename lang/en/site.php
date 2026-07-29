@@ -164,4 +164,9 @@ return [
     'article_share' => 'Share this article:',
     'related_articles_title' => 'Related News',
     'link_copied' => 'Link copied!',
+
+    // Educational Materials page (new design)
+    'search_materials_placeholder' => 'Search documents or modules...',
+    'btn_read' => 'Read',
+    'material_downloads' => ':count Downloads',
 ];

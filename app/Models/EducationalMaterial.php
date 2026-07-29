@@ -20,6 +20,7 @@ class EducationalMaterial extends Model
         'thumbnail',
         'thumbnail_position',
         'file_path',
+        'downloads_count',
         'is_active',
     ];
 
@@ -43,5 +44,22 @@ class EducationalMaterial extends Model
             'bottom' => 'object-bottom',
             default => 'object-center',
         };
+    }
+
+    public function formattedFileSize(): string
+    {
+        try {
+            $bytes = \Illuminate\Support\Facades\Storage::disk('public')->size($this->file_path);
+        } catch (\Throwable $e) {
+            return '-';
+        }
+
+        if ($bytes >= 1048576) {
+            return number_format($bytes / 1048576, 1) . ' MB';
+        }
+        if ($bytes >= 1024) {
+            return number_format($bytes / 1024, 1) . ' KB';
+        }
+        return $bytes . ' B';
     }
 }

@@ -35,8 +35,8 @@
                         class="px-6 py-3 border border-brand-300 text-brand-700 font-semibold rounded-full hover:bg-brand-100 transition-all duration-300">
                         {{ __('site.btn_view_pdf') }}
                     </a>
-                    <a href="{{ Storage::url($material->file_path) }}" download
-                        class="px-6 py-3 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30 transition-all duration-300">
+                    <a href="{{ route('materials.download', $material) }}"
+                    class="px-6 py-3 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30 transition-all duration-300">
                         {{ __('site.btn_download') }}
                     </a>
                 </div>
