@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Gallery;
 use App\Models\Program;
+use App\Models\TeamMember;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -33,8 +34,12 @@ class HomeController extends Controller
     }
 
     public function about(): View
-{
-    return view('about');
-}
+    {
+        $teamMembers = TeamMember::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
+        return view('about', compact('teamMembers'));
+    }
 
 }

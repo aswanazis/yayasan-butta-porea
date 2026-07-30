@@ -2,138 +2,123 @@
 
 @section('title', 'Tentang Kami - Yayasan Butta Porea Indonesia')
 
+@push('styles')
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+@endpush
+
 @section('content')
+<div class="bg-surface text-on-surface font-body-md text-body-md">
+    <main>
 
-    <section class="bg-brand-50 py-16">
-        <div
-            x-data="{ show: false }" x-init="setTimeout(() => show = true, 100)"
-            class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span
-                x-show="show" x-transition:enter="transition ease-out duration-700" x-transition:enter-start="opacity-0 -translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
-                class="text-brand-600 font-semibold text-sm uppercase tracking-wide">{{ __('site.page_about_badge') }}</span>
-            <h1
-                x-show="show" x-transition:enter="transition ease-out duration-700 delay-100" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                class="text-4xl font-bold text-brand-900 mt-2">{{ __('site.page_about_title') }}</h1>
-            <p
-                x-show="show" x-transition:enter="transition ease-out duration-700 delay-200" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                class="text-brand-700 mt-4 text-lg leading-relaxed">
-                {{ __('site.page_about_desc') }}
-            </p>
-        </div>
-    </section>
-
-    {{-- STAT STRIP --}}
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
-        <div
-            x-data="{ show: false }" x-intersect.once="show = true"
-            :class="show ? 'reveal-show' : ''"
-            class="reveal-stagger grid grid-cols-3 divide-x divide-brand-200 bg-white rounded-2xl shadow-lg shadow-brand-900/5 py-6">
-            <div class="text-center px-4">
-                <p class="text-2xl md:text-3xl font-extrabold text-brand-700">2023</p>
-                <p class="text-xs text-brand-600 mt-1">{{ __('site.stat_year_label') }}</p>
+        {{-- HERO --}}
+        <section class="relative w-full py-stack-lg flex items-center justify-center overflow-hidden bg-primary-container">
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-primary-container"></div>
+            <div class="relative z-20 text-center max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop">
+                <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-stack-md">{{ __('site.about2_title') }}</h1>
+                <p class="font-body-lg text-body-lg text-white/90 leading-relaxed">{{ __('site.about2_desc') }}</p>
             </div>
-            <div class="text-center px-4">
-                <p class="text-2xl md:text-3xl font-extrabold text-brand-700">🌱</p>
-                <p class="text-xs text-brand-600 mt-1">{{ __('site.stat_farming_label') }}</p>
-            </div>
-            <div class="text-center px-4">
-                <p class="text-2xl md:text-3xl font-extrabold text-brand-700">WBP</p>
-                <p class="text-xs text-brand-600 mt-1">{{ __('site.stat_focus_label') }}</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    {{-- VISI --}}
-    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        <div
-            x-data="{ show: false }" x-intersect.once="show = true"
-            :class="show ? 'reveal-show' : ''"
-            class="reveal text-center">
-            <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center text-2xl mb-4 mx-auto">🎯</div>
-            <h2 class="text-sm font-semibold text-brand-600 uppercase tracking-wide mb-2">{{ __('site.vision_title') }}</h2>
-            <p class="text-brand-900 text-xl md:text-2xl font-bold leading-snug">
-                {{ __('site.vision_text') }}
-            </p>
-        </div>
-    </section>
-
-    {{-- MISI --}}
-    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div
-            x-data="{ show: false }" x-intersect.once="show = true"
-            :class="show ? 'reveal-show' : ''"
-            class="reveal">
-            <div class="flex items-center gap-3 justify-center mb-8">
-                <div class="w-10 h-10 bg-brand-100 rounded-lg flex items-center justify-center text-xl">🌿</div>
-                <h2 class="text-2xl font-bold text-brand-900">{{ __('site.mission_title') }}</h2>
-            </div>
-
-            <ul class="grid md:grid-cols-2 gap-x-8 gap-y-5 text-brand-700">
-                @foreach(__('site.mission_items') as $index => $mission)
-                    <li class="flex gap-3 group bg-white rounded-xl p-4 shadow-sm border border-brand-100">
-                        <span class="text-brand-600 font-bold shrink-0">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                        <span class="leading-relaxed">{{ $mission }}</span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </section>
-
-    {{-- DIVISI --}}
-    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div
-            x-data="{ show: false }" x-intersect.once="show = true"
-            :class="show ? 'reveal-show' : ''"
-            class="reveal text-center mb-10">
-            <h2 class="text-2xl font-bold text-brand-900">{{ __('site.divisions_title') }}</h2>
-        </div>
-
-        @php
-            $divisionIcons = ['🌾', '🐄', '🌳', '⚖️', '📢', '🐟'];
-        @endphp
-
-        <div
-            x-data="{ show: false }" x-intersect.once="show = true"
-            :class="show ? 'reveal-show' : ''"
-            class="reveal-stagger grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            @foreach(__('site.divisions_items') as $index => $division)
-                <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-brand-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                    <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-2xl mx-auto mb-3">
-                        {{ $divisionIcons[$index] ?? '🌱' }}
+        {{-- VISI & MISI --}}
+        <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-start">
+                <div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-surface-variant">
+                    <div class="flex items-center gap-4 mb-stack-sm">
+                        <div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+                            <span class="material-symbols-outlined text-3xl">visibility</span>
+                        </div>
+                        <h2 class="font-headline-md text-headline-md text-primary">{{ __('site.vision_title') }}</h2>
                     </div>
-                    <p class="text-brand-900 font-semibold text-sm md:text-base">{{ $division }}</p>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">{{ __('site.vision_text') }}</p>
                 </div>
-            @endforeach
-        </div>
-    </section>
 
-    {{-- MENGAPA URBAN FARMING --}}
-    <section class="bg-earth-100 py-16">
-        <div
-            x-data="{ show: false }" x-intersect.once="show = true"
-            :class="show ? 'reveal-show' : ''"
-            class="reveal max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl font-bold text-brand-900 mb-4">{{ __('site.why_urban_farming_title') }}</h2>
-            <p class="text-brand-700 leading-relaxed max-w-2xl mx-auto">
-                {{ __('site.why_urban_farming_text') }}
-            </p>
-        </div>
-    </section>
+                <div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-surface-variant">
+                    <div class="flex items-center gap-4 mb-stack-sm">
+                        <div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-3xl">flag</span>
+                        </div>
+                        <h2 class="font-headline-md text-headline-md text-primary">{{ __('site.mission_title') }}</h2>
+                    </div>
+                    <ul class="space-y-4">
+                        @foreach(__('site.mission_items') as $mission)
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-primary-container mt-1">check_circle</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant">{{ $mission }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    {{-- CTA --}}
-    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <div
-            x-data="{ show: false }" x-intersect.once="show = true"
-            :class="show ? 'reveal-show' : ''"
-            class="reveal">
-            <h2 class="text-2xl font-bold text-brand-900 mb-4">{{ __('site.cta_collab_title') }}</h2>
-            <p class="text-brand-700 mb-8">
-                {{ __('site.cta_collab_text') }}
-            </p>
-            <a href="{{ route('contact.index') }}" class="inline-block px-8 py-3 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30 hover:-translate-y-0.5 transition-all duration-300">
-                {{ __('site.contact_us') }}
-            </a>
-        </div>
-    </section>
+        {{-- NILAI-NILAI --}}
+        <section class="py-stack-lg bg-surface-container-low">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+                <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg">{{ __('site.values_title') }}</h2>
+                @php
+                    $valueColors = ['text-tertiary-fixed-dim', 'text-primary-container', 'text-secondary'];
+                @endphp
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                    @foreach(__('site.values_items') as $index => $value)
+                        <div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm flex flex-col items-center text-center">
+                            <span class="material-symbols-outlined text-5xl {{ $valueColors[$index % 3] }} mb-4">{{ $value['icon'] }}</span>
+                            <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">{{ $value['title'] }}</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">{{ $value['desc'] }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
 
+        {{-- DIVISI KAMI (dipertahankan dari desain sebelumnya) --}}
+        <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center">{{ __('site.divisions_title') }}</h2>
+            @php
+                $divisionIcons = ['🌾', '🐄', '🌳', '⚖️', '📢', '🐟'];
+            @endphp
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+                @foreach(__('site.divisions_items') as $index => $division)
+                    <div class="bg-surface-container-lowest rounded-xl p-6 text-center shadow-sm border border-surface-variant">
+                        <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-2xl mx-auto mb-3">
+                            {{ $divisionIcons[$index] ?? '🌱' }}
+                        </div>
+                        <p class="font-body-md font-semibold text-on-surface">{{ $division }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        {{-- PENGURUS YAYASAN --}}
+        <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="text-center mb-stack-lg">
+                <h2 class="font-headline-md text-headline-md text-primary mb-4">{{ __('site.team_title') }}</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">{{ __('site.team_desc') }}</p>
+            </div>
+
+            @if($teamMembers->isEmpty())
+                <p class="text-center text-on-surface-variant">{{ __('site.team_empty') }}</p>
+            @else
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                    @foreach($teamMembers as $member)
+                        <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-surface-variant group">
+                            <div class="h-64 overflow-hidden bg-surface-container flex items-center justify-center">
+                                @if($member->photo)
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($member->photo) }}" alt="{{ $member->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                @else
+                                    <span class="material-symbols-outlined text-6xl text-outline-variant">person</span>
+                                @endif
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface text-lg">{{ $member->name }}</h3>
+                                <p class="font-label-md text-label-md text-primary mt-1">{{ $member->position }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </section>
+
+    </main>
+</div>
 @endsection

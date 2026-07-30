@@ -169,4 +169,17 @@ return [
     'search_materials_placeholder' => 'Cari dokumen atau modul...',
     'btn_read' => 'Baca',
     'material_downloads' => ':count Unduhan',
+
+    // Halaman Tentang Kami (desain baru)
+    'about2_title' => 'Mengenal Yayasan Butta Porea Indonesia',
+    'about2_desc' => 'Berawal dari kepedulian mendalam terhadap tanah yang subur dan masyarakat lokal yang tangguh, Yayasan Butta Porea Indonesia lahir. Kami percaya bahwa akar dari kemajuan komunitas terletak pada harmoni antara manusia dan alam sekitarnya.',
+    'values_title' => 'Nilai-Nilai Inti Kami',
+    'values_items' => [
+        ['icon' => 'lightbulb', 'title' => 'Inovasi', 'desc' => 'Terus mencari pendekatan baru dalam menyelesaikan tantangan lingkungan dan sosial.'],
+        ['icon' => 'eco', 'title' => 'Keberlanjutan', 'desc' => 'Berkomitmen pada solusi jangka panjang yang selaras dengan daya dukung alam.'],
+        ['icon' => 'diversity_1', 'title' => 'Kemanusiaan', 'desc' => 'Menempatkan kesejahteraan masyarakat dan gotong royong sebagai pusat setiap inisiatif.'],
+    ],
+    'team_title' => 'Pengurus Yayasan',
+    'team_desc' => 'Individu-individu berdedikasi yang menakhodai perjalanan yayasan menuju masa depan yang berkelanjutan.',
+    'team_empty' => 'Data pengurus belum ditambahkan.',
 ];

@@ -169,4 +169,17 @@ return [
     'search_materials_placeholder' => 'Search documents or modules...',
     'btn_read' => 'Read',
     'material_downloads' => ':count Downloads',
+
+    // About page (new design)
+    'about2_title' => 'Getting to Know Yayasan Butta Porea Indonesia',
+    'about2_desc' => 'Born from a deep concern for fertile land and resilient local communities, Yayasan Butta Porea Indonesia was founded. We believe community progress is rooted in harmony between people and their environment.',
+    'values_title' => 'Our Core Values',
+    'values_items' => [
+        ['icon' => 'lightbulb', 'title' => 'Innovation', 'desc' => 'Continuously seeking new approaches to solve environmental and social challenges.'],
+        ['icon' => 'eco', 'title' => 'Sustainability', 'desc' => 'Committed to long-term solutions aligned with the environment\'s carrying capacity.'],
+        ['icon' => 'diversity_1', 'title' => 'Humanity', 'desc' => 'Placing community wellbeing and mutual cooperation at the center of every initiative.'],
+    ],
+    'team_title' => 'Foundation Board',
+    'team_desc' => 'Dedicated individuals steering the foundation\'s journey toward a sustainable future.',
+    'team_empty' => 'Board member data has not been added yet.',
 ];

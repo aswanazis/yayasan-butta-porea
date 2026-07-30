@@ -7,10 +7,12 @@ use App\Models\Program;
 use App\Models\Category;
 use App\Models\Article;
 use App\Models\EducationalMaterial;
+use App\Models\TeamMember;
 use App\Observers\ProgramObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ArticleObserver;
 use App\Observers\EducationalMaterialObserver;
+use App\Observers\TeamMemberObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
         Category::observe(CategoryObserver::class);
         Article::observe(ArticleObserver::class);
         EducationalMaterial::observe(EducationalMaterialObserver::class);
+        TeamMember::observe(TeamMemberObserver::class);
     }
 }
