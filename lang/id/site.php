@@ -182,4 +182,14 @@ return [
     'team_title' => 'Pengurus Yayasan',
     'team_desc' => 'Individu-individu berdedikasi yang menakhodai perjalanan yayasan menuju masa depan yang berkelanjutan.',
     'team_empty' => 'Data pengurus belum ditambahkan.',
+
+    // Halaman Kontak (desain baru)
+    'contact2_title' => 'Hubungi Kami',
+    'contact2_desc' => 'Kami senang mendengar dari Anda. Apakah Anda memiliki pertanyaan tentang program kami, ingin berkolaborasi, atau sekadar menyapa, jangan ragu untuk menghubungi tim kami.',
+    'contact2_form_title' => 'Kirim Pesan',
+    'btn_send_now' => 'Kirim Pesan Sekarang',
+    'contact_info_title' => 'Informasi Kontak',
+    'contact_office_title' => 'Kantor Pusat',
+    'contact_phone_title' => 'Telepon',
+    'contact_email_title' => 'Email',
 ];

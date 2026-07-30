@@ -182,4 +182,14 @@ return [
     'team_title' => 'Foundation Board',
     'team_desc' => 'Dedicated individuals steering the foundation\'s journey toward a sustainable future.',
     'team_empty' => 'Board member data has not been added yet.',
+
+    // Contact page (new design)
+    'contact2_title' => 'Contact Us',
+    'contact2_desc' => 'We would love to hear from you. Whether you have a question about our programs, want to collaborate, or just want to say hello, feel free to reach out to our team.',
+    'contact2_form_title' => 'Send a Message',
+    'btn_send_now' => 'Send Message Now',
+    'contact_info_title' => 'Contact Information',
+    'contact_office_title' => 'Head Office',
+    'contact_phone_title' => 'Phone',
+    'contact_email_title' => 'Email',
 ];
