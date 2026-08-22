@@ -27,7 +27,7 @@
         </section>
 
         {{-- SEARCH --}}
-        <section>
+        <section class="reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             <form method="GET" action="{{ route('materials.index') }}" class="relative w-full md:w-1/2">
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
                 <input
@@ -46,7 +46,7 @@
                 <p class="font-body-md text-body-md text-on-surface-variant">{{ __('site.page_materials_empty') }}</p>
             </section>
         @else
-            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 @foreach($materials as $material)
                     <div class="bg-surface-container-lowest rounded-xl p-6 border border-surface-container-highest shadow-sm hover:shadow-md transition-all duration-300 flex flex-col hover:-translate-y-1 relative overflow-hidden group">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-fixed opacity-10 rounded-bl-full -z-0 group-hover:scale-110 transition-transform"></div>

@@ -52,7 +52,7 @@
 
     {{-- DESKRIPSI LENGKAP --}}
     @if($program->description)
-        <article class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-md prose prose-lg prose-headings:font-headline-md prose-headings:text-on-surface prose-p:text-on-surface-variant prose-p:font-body-md max-w-none">
+        <article class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-md prose prose-lg prose-headings:font-headline-md prose-headings:text-on-surface prose-p:text-on-surface-variant prose-p:font-body-md max-w-none reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             {!! $program->description !!}
         </article>
     @endif
@@ -60,14 +60,14 @@
     {{-- PROSES KERJA --}}
     @if(!empty($program->process_steps))
         <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-stack-lg">
-            <div class="text-center mb-stack-md">
+            <div class="text-center mb-stack-md reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 <h2 class="font-headline-md text-headline-md text-primary mb-2">{{ __('site.prog_process_title') }}</h2>
                 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">{{ __('site.prog_process_desc') }}</p>
             </div>
 
             <div class="relative">
                 <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-surface-container-high -translate-y-1/2 z-0"></div>
-                <div class="grid grid-cols-1 md:grid-cols-{{ min(count($program->process_steps), 4) }} gap-gutter relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-{{ min(count($program->process_steps), 4) }} gap-gutter relative z-10 reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     @foreach($program->process_steps as $index => $step)
                         @php $isLast = $index === count($program->process_steps) - 1; @endphp
                         <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-surface-variant text-center flex flex-col items-center">
@@ -87,7 +87,7 @@
     @if(!empty($program->impact_items) || !empty($program->impact_stats) || $program->impact_image_1)
         <section class="bg-surface-container-low py-stack-lg mb-stack-lg rounded-3xl mx-margin-mobile md:mx-margin-desktop">
             <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     <div>
                         <h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">{{ __('site.prog_impact_title') }}</h2>
 
@@ -140,12 +140,12 @@
     {{-- GALERI DOKUMENTASI --}}
     @if($program->galleries->isNotEmpty())
         <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-stack-lg">
-            <h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">{{ __('site.prog_documentation_title') }}</h2>
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.prog_documentation_title') }}</h2>
 
             @foreach($program->galleries as $gallery)
                 <div class="mb-8">
                     <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">{{ $gallery->title }}</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                         @foreach($gallery->photos as $photo)
                             <div class="aspect-square rounded-xl overflow-hidden bg-surface-container">
                                 <img src="{{ Storage::url($photo->image_path) }}" alt="{{ $photo->caption }}" class="w-full h-full object-cover hover:scale-105 transition duration-300">
@@ -159,7 +159,7 @@
 
     {{-- CTA --}}
     <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-stack-lg">
-        <div class="bg-primary text-on-primary rounded-2xl p-margin-desktop text-center relative overflow-hidden">
+        <div class="bg-primary text-on-primary rounded-2xl p-margin-desktop text-center relative overflow-hidden reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
                 <span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
             </div>

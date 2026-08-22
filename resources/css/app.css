@@ -175,9 +175,14 @@ html {
 }
 
 .reveal-stagger.reveal-show > *:nth-child(1) { transition-delay: 0ms; }
-.reveal-stagger.reveal-show > *:nth-child(2) { transition-delay: 100ms; }
-.reveal-stagger.reveal-show > *:nth-child(3) { transition-delay: 200ms; }
-.reveal-stagger.reveal-show > *:nth-child(4) { transition-delay: 300ms; }
+.reveal-stagger.reveal-show > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger.reveal-show > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger.reveal-show > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger.reveal-show > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger.reveal-show > *:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger.reveal-show > *:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger.reveal-show > *:nth-child(8) { transition-delay: 560ms; }
+.reveal-stagger.reveal-show > *:nth-child(n+9) { transition-delay: 640ms; }
 
 .reveal-stagger.reveal-show > * {
     opacity: 1;

@@ -22,7 +22,7 @@
 
         {{-- VISI & MISI --}}
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-start reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 <div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-surface-variant">
                     <div class="flex items-center gap-4 mb-stack-sm">
                         <div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
@@ -55,11 +55,11 @@
         {{-- NILAI-NILAI --}}
         <section class="py-stack-lg bg-surface-container-low">
             <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
-                <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg">{{ __('site.values_title') }}</h2>
+                <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.values_title') }}</h2>
                 @php
                     $valueColors = ['text-tertiary-fixed-dim', 'text-primary-container', 'text-secondary'];
                 @endphp
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     @foreach(__('site.values_items') as $index => $value)
                         <div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm flex flex-col items-center text-center">
                             <span class="material-symbols-outlined text-5xl {{ $valueColors[$index % 3] }} mb-4">{{ $value['icon'] }}</span>
@@ -73,11 +73,11 @@
 
         {{-- DIVISI KAMI (dipertahankan dari desain sebelumnya) --}}
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-            <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center">{{ __('site.divisions_title') }}</h2>
+            <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.divisions_title') }}</h2>
             @php
                 $divisionIcons = ['🌾', '🐄', '🌳', '⚖️', '📢', '🐟'];
             @endphp
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-gutter">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 @foreach(__('site.divisions_items') as $index => $division)
                     <div class="bg-surface-container-lowest rounded-xl p-6 text-center shadow-sm border border-surface-variant">
                         <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-2xl mx-auto mb-3">
@@ -91,7 +91,7 @@
 
         {{-- PENGURUS YAYASAN --}}
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-            <div class="text-center mb-stack-lg">
+            <div class="text-center mb-stack-lg reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 <h2 class="font-headline-md text-headline-md text-primary mb-4">{{ __('site.team_title') }}</h2>
                 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">{{ __('site.team_desc') }}</p>
             </div>
@@ -99,7 +99,7 @@
             @if($teamMembers->isEmpty())
                 <p class="text-center text-on-surface-variant">{{ __('site.team_empty') }}</p>
             @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     @foreach($teamMembers as $member)
                         <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-surface-variant group">
                             <div class="h-64 overflow-hidden bg-surface-container flex items-center justify-center">

@@ -24,7 +24,7 @@
         </section>
 
         {{-- SEARCH & FILTER --}}
-        <section class="flex flex-col md:flex-row gap-gutter items-center justify-between">
+        <section class="flex flex-col md:flex-row gap-gutter items-center justify-between reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             <form method="GET" action="{{ route('articles.index') }}" class="relative w-full md:w-1/3">
                 @if(request('category'))
                     <input type="hidden" name="category" value="{{ request('category') }}">
@@ -67,7 +67,7 @@
                 <p class="text-on-surface-variant">{{ __('site.articles_no_results') }}</p>
             </section>
         @else
-            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 @foreach($articles as $index => $article)
                     <a href="{{ route('articles.show', $article) }}" class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.01] flex flex-col group border border-surface-container-highest">
                         <div class="relative h-48 overflow-hidden">

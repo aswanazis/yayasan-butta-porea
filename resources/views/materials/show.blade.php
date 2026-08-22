@@ -13,7 +13,7 @@
             &larr; {{ __('site.back_to_materials') }}
         </a>
 
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-100">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-100 reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             <div class="aspect-video bg-earth-200 flex items-center justify-center">
                 @if($material->thumbnail)
                     <img src="{{ Storage::url($material->thumbnail) }}" alt="{{ $material->title }}" class="w-full h-full object-cover {{ $material->thumbnailPositionClass() }}">

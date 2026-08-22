@@ -79,7 +79,7 @@
 
         {{-- GAMBAR UTAMA --}}
         @if($article->thumbnail)
-            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-stack-lg">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-stack-lg reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 <div class="rounded-xl overflow-hidden aspect-[16/9] md:aspect-[21/9] shadow-md relative bg-surface-container">
                     <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}" class="w-full h-full object-cover {{ $article->thumbnailPositionClass() }}">
                 </div>
@@ -87,7 +87,7 @@
         @endif
 
         {{-- BODY --}}
-        <article class="max-w-[800px] mx-auto px-margin-mobile md:px-0 article-content">
+        <article class="max-w-[800px] mx-auto px-margin-mobile md:px-0 article-content reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             @if($article->excerpt)
                 <p class="font-body-lg text-body-lg text-primary-container font-medium italic border-l-4 border-primary pl-6 py-2 mb-8 bg-primary/5">
                     {{ $article->excerpt }}
@@ -113,8 +113,8 @@
         {{-- BERITA TERKAIT --}}
         @if($relatedArticles->isNotEmpty())
             <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-stack-lg">
-                <h3 class="font-headline-md text-headline-md text-primary mb-stack-md">{{ __('site.related_articles_title') }}</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <h3 class="font-headline-md text-headline-md text-primary mb-stack-md reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.related_articles_title') }}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     @foreach($relatedArticles as $related)
                         <a href="{{ route('articles.show', $related) }}" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:scale-[1.02] transition-all group border border-surface-container-highest">
                             <div class="aspect-[4/3] bg-surface-container-high relative overflow-hidden">

@@ -27,7 +27,7 @@
 
         {{-- BENTO LAYOUT --}}
         <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
 
                 {{-- FORM --}}
                 <div class="lg:col-span-7 bg-surface-container-lowest p-stack-md md:p-margin-desktop rounded-xl shadow-sm border border-surface-variant">

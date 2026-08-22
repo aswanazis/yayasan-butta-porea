@@ -103,7 +103,7 @@
 
     {{-- PROGRAM UNGGULAN --}}
     <section class="py-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-stack-md">
-        <div class="text-center max-w-2xl mx-auto mb-stack-lg">
+        <div class="text-center max-w-2xl mx-auto mb-stack-lg reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             <h2 class="font-headline-md text-headline-md text-on-surface mb-4">{{ __('site.section2_programs_title') }}</h2>
             <p class="font-body-lg text-body-lg text-on-surface-variant">{{ __('site.section2_programs_desc') }}</p>
         </div>
@@ -117,7 +117,7 @@
             ];
         @endphp
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
             @forelse($programs as $index => $program)
                 @php $c = $cardColors[$index % 3]; @endphp
                 <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 border border-surface-variant group flex flex-col h-full">
@@ -140,7 +140,7 @@
     {{-- BERITA --}}
     <section class="py-stack-lg bg-surface-container-low mt-stack-lg">
         <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="flex justify-between items-end mb-stack-lg">
+            <div class="flex justify-between items-end mb-stack-lg reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 <div>
                     <h2 class="font-headline-md text-headline-md text-on-surface mb-2">{{ __('site.section2_news_title') }}</h2>
                     <p class="font-body-md text-body-md text-on-surface-variant">{{ __('site.section2_news_desc') }}</p>
@@ -155,7 +155,7 @@
                 $newsHoverColors = ['group-hover:text-primary', 'group-hover:text-secondary', 'group-hover:text-tertiary'];
             @endphp
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                 @forelse($articles as $index => $article)
                     <a href="{{ route('articles.show', $article) }}" class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group flex flex-col">
                         <div class="relative h-48 overflow-hidden">
