@@ -1,3 +1,8 @@
+@php
+    use Illuminate\Support\Facades\Storage;
+    use App\Models\TeamMember;
+@endphp
+
 @extends('layouts.app')
 
 @section('title', 'Tentang Kami - Yayasan Butta Porea Indonesia')
@@ -19,6 +24,16 @@
                 <p class="font-body-lg text-body-lg text-white/90 leading-relaxed">{{ __('site.about2_desc') }}</p>
             </div>
         </section>
+
+        {{-- PROFIL YAYASAN (legal) --}}
+        @if(!empty($foundationProfile->profile_text))
+            <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                <h2 class="font-headline-md text-headline-md text-primary mb-stack-sm text-center">{{ __('site.profile_section_title') }}</h2>
+                <div class="prose prose-lg prose-p:text-on-surface-variant prose-p:font-body-md max-w-none text-center">
+                    {!! $foundationProfile->profile_text !!}
+                </div>
+            </section>
+        @endif
 
         {{-- VISI & MISI --}}
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -71,6 +86,21 @@
             </div>
         </section>
 
+        {{-- KOMITMEN YAYASAN --}}
+        @if(!empty($foundationProfile->commitment_items))
+            <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.commitment_section_title') }}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                    @foreach($foundationProfile->commitment_items as $item)
+                        <div class="bg-primary text-on-primary rounded-xl p-stack-md flex flex-col items-center text-center shadow-sm">
+                            <span class="material-symbols-outlined text-4xl mb-3" style="font-variation-settings: 'FILL' 1;">{{ $item['icon'] ?? 'verified' }}</span>
+                            <h3 class="font-headline-sm text-headline-sm">{{ $item['title'] }}</h3>
+                        </div>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
         {{-- DIVISI KAMI (dipertahankan dari desain sebelumnya) --}}
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
             <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.divisions_title') }}</h2>
@@ -89,35 +119,101 @@
             </div>
         </section>
 
-        {{-- PENGURUS YAYASAN --}}
+        {{-- STRUKTUR ORGANISASI --}}
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
             <div class="text-center mb-stack-lg reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
-                <h2 class="font-headline-md text-headline-md text-primary mb-4">{{ __('site.team_title') }}</h2>
-                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">{{ __('site.team_desc') }}</p>
+                <h2 class="font-headline-md text-headline-md text-primary mb-4">{{ __('site.structure_section_title') }}</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">{{ __('site.structure_section_desc') }}</p>
             </div>
 
             @if($teamMembers->isEmpty())
-                <p class="text-center text-on-surface-variant">{{ __('site.team_empty') }}</p>
+                <p class="text-center text-on-surface-variant">{{ __('site.structure_empty') }}</p>
             @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
-                    @foreach($teamMembers as $member)
-                        <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-surface-variant group">
-                            <div class="h-64 overflow-hidden bg-surface-container flex items-center justify-center">
-                                @if($member->photo)
-                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($member->photo) }}" alt="{{ $member->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                @else
-                                    <span class="material-symbols-outlined text-6xl text-outline-variant">person</span>
+                @php $groupLabels = __('site.structure_groups'); @endphp
+                @foreach(TeamMember::GROUPS as $groupKey => $fallbackLabel)
+                    @php $members = $teamMembers->get($groupKey, collect()); @endphp
+                    @if($members->isNotEmpty())
+                        <div class="mb-stack-md">
+                            <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 pb-2 border-b border-outline-variant">
+                                {{ $groupLabels[$groupKey] ?? $fallbackLabel }}
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                                @foreach($members as $member)
+                                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border {{ $member->is_coordinator ? 'border-primary ring-1 ring-primary' : 'border-surface-variant' }} group">
+                                        <div class="h-56 overflow-hidden bg-surface-container flex items-center justify-center">
+                                            @if($member->photo)
+                                                <img src="{{ Storage::url($member->photo) }}" alt="{{ $member->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                            @else
+                                                <span class="material-symbols-outlined text-6xl text-outline-variant">person</span>
+                                            @endif
+                                        </div>
+                                        <div class="p-4 text-center">
+                                            @if($member->is_coordinator)
+                                                <span class="inline-block mb-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-label-md font-bold uppercase tracking-wide">
+                                                    {{ $member->position }}
+                                                </span>
+                                            @endif
+                                            <h4 class="font-headline-sm text-headline-sm text-on-surface text-base">{{ $member->name }}</h4>
+                                            @if(!$member->is_coordinator)
+                                                <p class="font-label-md text-label-md text-primary mt-1">{{ $member->position }}</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+        </section>
+
+        {{-- PENGHARGAAN --}}
+        @if($awards->isNotEmpty())
+            <section class="py-stack-lg bg-surface-container-low">
+                <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.awards_section_title') }}</h2>
+                    <div class="space-y-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                        @foreach($awards as $award)
+                            <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-surface-variant p-stack-md grid grid-cols-1 md:grid-cols-3 gap-gutter items-center">
+                                @if($award->photo)
+                                    <div class="rounded-lg overflow-hidden aspect-[4/3] bg-surface-container">
+                                        <img src="{{ Storage::url($award->photo) }}" alt="{{ $award->title }}" class="w-full h-full object-cover">
+                                    </div>
                                 @endif
+                                <div class="{{ $award->photo ? 'md:col-span-2' : 'md:col-span-3' }}">
+                                    <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">{{ $award->title }}</h3>
+                                    @if($award->description)
+                                        <p class="font-body-md text-body-md text-on-surface-variant">{{ $award->description }}</p>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="p-4 text-center">
-                                <h3 class="font-headline-sm text-headline-sm text-on-surface text-lg">{{ $member->name }}</h3>
-                                <p class="font-label-md text-label-md text-primary mt-1">{{ $member->position }}</p>
-                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- LEGALITAS YAYASAN --}}
+        @if($legalDocuments->isNotEmpty())
+            <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <h2 class="font-headline-md text-headline-md text-primary mb-stack-lg text-center reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">{{ __('site.legal_section_title') }}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                    @foreach($legalDocuments as $document)
+                        <div class="text-center">
+                            @if($document->image)
+                                <div class="rounded-xl overflow-hidden shadow-sm border border-surface-variant mb-3 bg-surface-container-lowest">
+                                    <img src="{{ Storage::url($document->image) }}" alt="{{ $document->title }}" class="w-full h-auto object-contain">
+                                </div>
+                            @endif
+                            <h4 class="font-headline-sm text-headline-sm text-on-surface mb-1">{{ $document->title }}</h4>
+                            @if($document->caption)
+                                <p class="font-body-md text-sm text-on-surface-variant">{{ $document->caption }}</p>
+                            @endif
                         </div>
                     @endforeach
                 </div>
-            @endif
-        </section>
+            </section>
+        @endif
 
     </main>
 </div>

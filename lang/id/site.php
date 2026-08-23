@@ -183,6 +183,39 @@ return [
     'team_desc' => 'Individu-individu berdedikasi yang menakhodai perjalanan yayasan menuju masa depan yang berkelanjutan.',
     'team_empty' => 'Data pengurus belum ditambahkan.',
 
+    // Profil Yayasan (legal) & Struktur Organisasi
+    'profile_section_title' => 'Profil Yayasan',
+    'structure_section_title' => 'Struktur Organisasi',
+    'structure_section_desc' => 'Susunan pengurus yang menjalankan roda organisasi Yayasan Butta Porea Indonesia.',
+    'structure_empty' => 'Struktur organisasi belum ditambahkan.',
+    'structure_groups' => [
+        'dewan_pembina' => 'Dewan Pembina',
+        'dewan_pengawas' => 'Dewan Pengawas',
+        'ketua' => 'Ketua',
+        'sekretaris' => 'Sekretaris',
+        'bendahara' => 'Bendahara',
+        'divisi_pertanian' => 'Divisi Pertanian',
+        'divisi_peternakan' => 'Divisi Peternakan',
+        'divisi_perikanan' => 'Divisi Perikanan',
+        'divisi_lingkungan_hidup' => 'Divisi Lingkungan Hidup',
+        'divisi_hukum' => 'Divisi Hukum',
+        'pengurus' => 'Pengurus Lainnya',
+    ],
+    'commitment_section_title' => 'Komitmen Yayasan',
+    'commitment_empty' => 'Poin komitmen belum ditambahkan.',
+
+    // Penghargaan
+    'awards_section_title' => 'Penghargaan',
+    'awards_empty' => 'Belum ada penghargaan yang ditambahkan.',
+
+    // Legalitas Yayasan
+    'legal_section_title' => 'Legalitas Yayasan',
+    'legal_empty' => 'Dokumen legalitas belum ditambahkan.',
+
+    // Jejaring Kemitraan & Pendukung
+    'partners_kemitraan_title' => 'Jejaring Kemitraan',
+    'partners_pendukung_title' => 'Jejaring Pendukung',
+
     // Halaman Kontak (desain baru)
     'contact2_title' => 'Hubungi Kami',
     'contact2_desc' => 'Kami senang mendengar dari Anda. Apakah Anda memiliki pertanyaan tentang program kami, ingin berkolaborasi, atau sekadar menyapa, jangan ragu untuk menghubungi tim kami.',

@@ -183,6 +183,39 @@ return [
     'team_desc' => 'Dedicated individuals steering the foundation\'s journey toward a sustainable future.',
     'team_empty' => 'Board member data has not been added yet.',
 
+    // Foundation Profile (legal) & Organizational Structure
+    'profile_section_title' => 'Foundation Profile',
+    'structure_section_title' => 'Organizational Structure',
+    'structure_section_desc' => 'The board that runs the organization of Yayasan Butta Porea Indonesia.',
+    'structure_empty' => 'Organizational structure has not been added yet.',
+    'structure_groups' => [
+        'dewan_pembina' => 'Board of Advisors',
+        'dewan_pengawas' => 'Board of Supervisors',
+        'ketua' => 'Chairperson',
+        'sekretaris' => 'Secretary',
+        'bendahara' => 'Treasurer',
+        'divisi_pertanian' => 'Agriculture Division',
+        'divisi_peternakan' => 'Livestock Division',
+        'divisi_perikanan' => 'Fisheries Division',
+        'divisi_lingkungan_hidup' => 'Environmental Division',
+        'divisi_hukum' => 'Legal Division',
+        'pengurus' => 'Other Board Members',
+    ],
+    'commitment_section_title' => 'Our Commitment',
+    'commitment_empty' => 'Commitment points have not been added yet.',
+
+    // Awards
+    'awards_section_title' => 'Awards',
+    'awards_empty' => 'No awards have been added yet.',
+
+    // Legal Documents
+    'legal_section_title' => 'Legal Standing',
+    'legal_empty' => 'Legal documents have not been added yet.',
+
+    // Partnership & Support Network
+    'partners_kemitraan_title' => 'Partnership Network',
+    'partners_pendukung_title' => 'Support Network',
+
     // Contact page (new design)
     'contact2_title' => 'Contact Us',
     'contact2_desc' => 'We would love to hear from you. Whether you have a question about our programs, want to collaborate, or just want to say hello, feel free to reach out to our team.',

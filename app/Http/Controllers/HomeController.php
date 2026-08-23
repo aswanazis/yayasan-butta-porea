@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Award;
+use App\Models\FoundationProfile;
 use App\Models\Gallery;
+use App\Models\LegalDocument;
+use App\Models\Partner;
 use App\Models\Program;
 use App\Models\TeamMember;
 use Illuminate\View\View;
@@ -30,16 +34,31 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
-        return view('home', compact('programs', 'totalPrograms', 'articles', 'galleries'));
+        $partners = Partner::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
+        return view('home', compact('programs', 'totalPrograms', 'articles', 'galleries', 'partners'));
     }
 
     public function about(): View
     {
         $teamMembers = TeamMember::where('is_active', true)
             ->orderBy('order')
+            ->get()
+            ->groupBy('group');
+
+        $foundationProfile = FoundationProfile::current();
+
+        $awards = Award::where('is_active', true)
+            ->orderBy('order')
             ->get();
 
-        return view('about', compact('teamMembers'));
+        $legalDocuments = LegalDocument::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
+        return view('about', compact('teamMembers', 'foundationProfile', 'awards', 'legalDocuments'));
     }
 
 }

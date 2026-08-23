@@ -19,26 +19,40 @@ class TeamMemberResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
-    protected static ?string $navigationLabel = 'Pengurus Yayasan';
+    protected static ?string $navigationLabel = 'Struktur Organisasi';
 
-    protected static ?string $modelLabel = 'Pengurus';
+    protected static ?string $modelLabel = 'Anggota Struktur';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('group')
+                    ->label('Kelompok / Jabatan Struktural')
+                    ->options(TeamMember::GROUPS)
+                    ->required()
+                    ->default('pengurus')
+                    ->native(false)
+                    ->helperText('Menentukan di bagian struktur organisasi mana orang ini muncul.'),
+
                 Forms\Components\TextInput::make('name')
                     ->label('Nama')
                     ->required()
                     ->maxLength(255),
 
                 Forms\Components\TextInput::make('position')
-                    ->label('Jabatan')
+                    ->label('Jabatan / Keterangan')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->helperText('Contoh: "Ketua", "Anggota", "Koordinator", "S.E., M.M." dsb.'),
+
+                Forms\Components\Toggle::make('is_coordinator')
+                    ->label('Tandai sebagai Koordinator/Ketua di kelompoknya')
+                    ->helperText('Anggota yang ditandai ini akan tampil lebih menonjol/di atas dalam kelompoknya.')
+                    ->default(false),
 
                 Forms\Components\FileUpload::make('photo')
-                    ->label('Foto')
+                    ->label('Foto (opsional)')
                     ->image()
                     ->imageEditor()
                     ->imageEditorAspectRatios(['1:1', '3:4'])
@@ -50,7 +64,7 @@ class TeamMemberResource extends Resource
                     ->label('Urutan Tampil')
                     ->numeric()
                     ->default(0)
-                    ->helperText('Angka lebih kecil tampil lebih dulu.'),
+                    ->helperText('Angka lebih kecil tampil lebih dulu di dalam kelompoknya.'),
 
                 Forms\Components\Toggle::make('is_active')
                     ->label('Aktif / Tampilkan di Website')
@@ -66,11 +80,18 @@ class TeamMemberResource extends Resource
                 Tables\Columns\ImageColumn::make('photo')
                     ->label('Foto')
                     ->circular(),
+                Tables\Columns\TextColumn::make('group')
+                    ->label('Kelompok')
+                    ->formatStateUsing(fn (string $state): string => TeamMember::GROUPS[$state] ?? $state)
+                    ->badge(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('position')
                     ->label('Jabatan'),
+                Tables\Columns\IconColumn::make('is_coordinator')
+                    ->label('Koordinator')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('order')
                     ->label('Urutan')
                     ->sortable(),
@@ -78,7 +99,11 @@ class TeamMemberResource extends Resource
                     ->label('Aktif')
                     ->boolean(),
             ])
-            ->filters([])
+            ->filters([
+                Tables\Filters\SelectFilter::make('group')
+                    ->label('Kelompok')
+                    ->options(TeamMember::GROUPS),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
