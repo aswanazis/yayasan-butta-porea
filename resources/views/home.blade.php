@@ -143,18 +143,18 @@
             $kemitraan = $partners->where('type', 'kemitraan');
             $pendukung = $partners->where('type', 'pendukung');
         @endphp
-        <section class="py-stack-md max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <section class="py-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
             @if($kemitraan->isNotEmpty())
-                <div class="text-center mb-stack-sm reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                <div class="text-center mb-stack-md reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     <p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">{{ __('site.partners_kemitraan_title') }}</p>
                 </div>
-                <div class="flex flex-wrap items-stretch justify-center gap-4 mb-stack-md reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-12 mb-stack-lg reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     @foreach($kemitraan as $partner)
-                        <div class="w-36 sm:w-40 h-20 flex items-center justify-center px-4 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/40 hover:shadow-sm transition-all" title="{{ $partner->name }}">
+                        <div class="h-20 flex items-center justify-center" title="{{ $partner->name }}">
                             @if($partner->logo)
-                                <img src="{{ Storage::url($partner->logo) }}" alt="{{ $partner->name }}" class="max-h-10 max-w-full w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                                <img src="{{ Storage::url($partner->logo) }}" alt="{{ $partner->name }}" class="max-h-16 max-w-[85%] w-auto object-contain transition-transform duration-300 ease-out hover:scale-110">
                             @else
-                                <span class="font-label-md text-label-md text-on-surface-variant text-center leading-tight">{{ $partner->name }}</span>
+                                <span class="font-label-md text-label-md text-on-surface-variant text-center leading-tight transition-transform duration-300 ease-out hover:scale-110">{{ $partner->name }}</span>
                             @endif
                         </div>
                     @endforeach
@@ -162,16 +162,16 @@
             @endif
 
             @if($pendukung->isNotEmpty())
-                <div class="text-center mb-stack-sm reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                <div class="text-center mb-stack-md reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     <p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">{{ __('site.partners_pendukung_title') }}</p>
                 </div>
-                <div class="flex flex-wrap items-stretch justify-center gap-4 reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-12 reveal-stagger" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
                     @foreach($pendukung as $partner)
-                        <div class="w-36 sm:w-40 h-20 flex items-center justify-center px-4 rounded-xl bg-surface-container-lowest border border-surface-variant hover:border-primary/40 hover:shadow-sm transition-all" title="{{ $partner->name }}">
+                        <div class="h-20 flex items-center justify-center" title="{{ $partner->name }}">
                             @if($partner->logo)
-                                <img src="{{ Storage::url($partner->logo) }}" alt="{{ $partner->name }}" class="max-h-10 max-w-full w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                                <img src="{{ Storage::url($partner->logo) }}" alt="{{ $partner->name }}" class="max-h-16 max-w-[85%] w-auto object-contain transition-transform duration-300 ease-out hover:scale-110">
                             @else
-                                <span class="font-label-md text-label-md text-on-surface-variant text-center leading-tight">{{ $partner->name }}</span>
+                                <span class="font-label-md text-label-md text-on-surface-variant text-center leading-tight transition-transform duration-300 ease-out hover:scale-110">{{ $partner->name }}</span>
                             @endif
                         </div>
                     @endforeach
