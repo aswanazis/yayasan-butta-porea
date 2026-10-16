@@ -161,6 +161,8 @@
                         </div>
                     </div>
 
+                    //https://maps.app.goo.gl/ZACe9B7Z2kKD882N6
+
                     <div class="h-64 rounded-xl overflow-hidden shadow-sm border border-surface-variant">
                         <iframe
                             src="https://www.google.com/maps?q={{ urlencode(__('site.footer_address')) }}&output=embed"

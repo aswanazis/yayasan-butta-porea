@@ -100,7 +100,7 @@
             </template>
         </div>
     </section>
-
+@include('partials.profile-video')
     {{-- PROGRAM UNGGULAN --}}
     <section class="py-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-stack-md">
         <div class="text-center max-w-2xl mx-auto mb-stack-lg reveal" x-data="{ show: false }" x-intersect.once="show = true" :class="show ? 'reveal-show' : ''">
@@ -138,7 +138,7 @@
     </section>
 
     {{-- JEJARING KEMITRAAN & PENDUKUNG --}}
-    @if($partners->isNotEmpty())
+    @include('partials.partners') @if(false && $partners->isNotEmpty())
         @php
             $kemitraan = $partners->where('type', 'kemitraan');
             $pendukung = $partners->where('type', 'pendukung');
